@@ -1,0 +1,41 @@
+{#
+{% include 'sysname.j2' %}
+#
+ clock timezone BJ add 08:00:00
+ clock protocol ntp
+#
+ lldp global enable
+#
+
+{% include 'ntp.j2' %}
+{% include 'info_center.j2' %}
+
+#
+ ssh server enable
+#
+public-key local creat rsa
+
+
+
+#
+public-key local creat dsa
+
+
+
+#
+line vty 0 63
+ authentication-mode scheme
+ protocol inbound ssh
+#
+
+{% include 'static_route.j2' %}
+
+{% include 'l2_interface.j2' %}
+
+{% include 'l3_interface.j2' %}
+
+{% include 'vlan.j2' %}
+
+{% include 'bagg.j2' %}
+#}
+{% include 'info_center.j2' %}

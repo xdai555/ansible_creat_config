@@ -1,0 +1,4 @@
+- name: Creat Local-user
+  template:
+    src: local_users.j2
+    dest: desired_config/{{ inventory_hostname }}/{{ ansible_date_time.date }}/{{ ansible_date_time.time.replace(':','-') }}_local_user.txt

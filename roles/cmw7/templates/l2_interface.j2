@@ -1,0 +1,17 @@
+{% for iface in l2_interface -%}
+{% for i in iface.iface_name|bracket2list -%}
+#
+interface {{ i }}
+ {% if iface.desc != None -%}
+ description {{ iface.desc }}
+ {% endif -%}
+{%- if iface.link_type == 'trunk' -%}
+ port link-type trunk
+ undo port trunk permit vlan 1
+ port trunk permit vlan {{ iface.allow_vlan }}
+{% else -%}
+ port link-type access
+ port access vlan {{ iface.allow_vlan }}
+{% endif -%}
+{% endfor -%}
+{% endfor %}

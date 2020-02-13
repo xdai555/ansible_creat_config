@@ -1,0 +1,13 @@
+---
+sysname: csw1
+
+local_users:
+ - username: test1
+   password: test1
+   user_role: network-admin
+   service_type: [ssh]
+ - username: test2
+   password: test2
+   user_role:
+   service_type: [telnet]
+

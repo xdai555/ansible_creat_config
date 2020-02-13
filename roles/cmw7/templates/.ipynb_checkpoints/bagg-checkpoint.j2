@@ -1,0 +1,27 @@
+{% for i in bagg -%}
+interface Bridge-Aggregation {{ i.number }}
+{% for iface in i.member|to_list %}
+interface {{ iface }}
+ port link-aggregation group {{ i.number }}
+#
+{% endfor %}
+interface Bridge-Aggregation {{ i.number }}
+ {% if i.desc != None -%}
+ description {{ i.desc }}
+ {% endif -%}
+ {% if i.lacp_mode == 'static' -%}
+ link-aggregation mode static
+ {% else -%}
+ link-aggregation mode dymanic
+ {% endif -%}
+ {% if i.link_type == 'trunk' -%}
+ port link-type trunk
+ undo port trunk permit vlan 1
+ port trunk permit vlan {{ i.allow_vlan }}
+ {% else -%}
+ port link-type access
+ port access vlan {{ i.allow_vlan }}
+ {% endif -%}
+#
+{% endfor %}
+

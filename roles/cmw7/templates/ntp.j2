@@ -1,0 +1,10 @@
+#
+ ntp-service enable
+ {% for i in ntp -%}
+ {% if i.src_iface != None -%}
+ ntp-service unicast-server {{ i.server_ip }} source {{ i.src_iface }}
+ {% else -%}
+ ntp-service unicast-server {{ i.server_ip }}
+{% endif -%}
+{% endfor -%}
+#

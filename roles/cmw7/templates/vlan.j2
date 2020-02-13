@@ -1,0 +1,9 @@
+{% for i in vlan %}
+{%- for id in i.id|to_list -%}
+vlan {{ id }}
+{% if i.name != None -%}
+ description {{ i.name }}
+{% endif -%}
+#
+{% endfor -%}
+{% endfor %}

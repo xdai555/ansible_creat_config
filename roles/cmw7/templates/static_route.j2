@@ -1,0 +1,9 @@
+#
+{% for route in static_route -%}
+{% if route.desc != None -%}
+ip route-static {{ route.dest| ipaddr("network") }} {{ route.dest | ipaddr('netmask')}} {{ route.out_iface }} {{ route.nexthop }} description {{ route.desc }}
+{% else -%}
+ip route-static {{ route.dest| ipaddr("network") }} {{ route.dest | ipaddr('netmask')}} {{ route.out_iface }} {{ route.nexthop }}
+{% endif -%}
+{% endfor -%}
+#

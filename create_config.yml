@@ -1,0 +1,14 @@
+- name: Creat configration 
+  hosts: csw1
+  connection: local
+
+  pre_tasks:
+    - name: Creat directory based on hostname&time
+      file:
+        path: desired_config/{{ inventory_hostname }}/{{ ansible_date_time.date}}
+        state: directory
+      delegate_to: localhost
+      run_once: yes
+
+  roles:
+    - cmw7

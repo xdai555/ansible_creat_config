@@ -1,0 +1,8 @@
+{% for iface in l3_interface -%}
+#
+interface {{ iface.iface_name }}
+ {% if iface.desc != None -%}
+ description {{ iface.desc }}
+ {% endif -%}
+ ip address {{ iface.ipaddr|ipaddr('address')}} {{ iface.ipaddr|ipaddr('netmask')}} 
+{% endfor %}

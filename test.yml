@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  gather_facts: no
+  vars:
+    ansible_ssh_pass: toor
+  tasks:
+    - name: run my py
+      script: print.py
+      register: py
+    - debug:
+        msg: "{{ py.stdout_lines }}"

@@ -1,0 +1,11 @@
+[csw]
+csw1 ansible_host=192.168.56.101
+csw2 ansible_host=192.168.56.102
+
+[dsw]
+dsw1 ansible_host=192.168.56.103
+dsw2 ansible_host=192.168.56.104
+
+[asw]
+asw1 ansible_host=192.168.56.105
+asw2 ansible_host=192.168.56.106

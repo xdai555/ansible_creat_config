@@ -1,0 +1,9 @@
+#
+ info-center enable
+ {% for server_ip in info_center.server_ip|to_list -%}
+ info-center loghost {{ server_ip }}
+ {% endfor -%}
+ {% if info_center.src_iface != None -%}
+info-center loghost source {{ info_center.src_iface }}
+ {%- endif %}
+#

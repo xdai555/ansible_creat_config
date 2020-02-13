@@ -1,0 +1,4 @@
+- name: Create initial config
+  template:
+    src: initial.j2
+    dest: desired_config/{{ inventory_hostname }}/{{ ansible_date_time.date }}/{{ ansible_date_time.time.replace(':','-') }}_initial.txt

@@ -1,0 +1,10 @@
+{% for local_user in local_users -%}
+#
+local-user {{ local_user.username }}
+ password simple {{ local_user.password }}
+ authorization-attribute user-role {{ local_user.user_role }}
+ {% for type in local_user.service_type -%}
+ service-type {{ type }}
+{% endfor -%}
+{%- endfor -%}
+#
