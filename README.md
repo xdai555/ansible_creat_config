@@ -1,2 +1,2 @@
 # Description 
-Creat h3c cmw7 configuration by Ansible+Jinja2+YAML
+Create H3C Comware7 switches configuration by Ansible+Jinja2+YAML.
