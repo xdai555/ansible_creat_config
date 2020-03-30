@@ -1,0 +1,7 @@
+{% for i in route %}
+uci set network.{{i.count}}="route"
+uci set network.{{i.count}}.interface="wan"
+uci set network.{{i.count}}.target='{{i.dst_network|ipaddr('address')}}'
+uci set network.{{i.count}}.netmask='{{i.dst_network|ipaddr('netmask')}}'
+uci set network.{{i.count}}.gateway='{{i.next_hop_addr}}'
+{% endfor %}
